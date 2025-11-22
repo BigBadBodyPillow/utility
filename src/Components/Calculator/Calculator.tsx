@@ -1,32 +1,133 @@
+import React, { useState } from 'react';
+import { useRef } from 'react';
+
+//css
 import './Calculator.css';
 
+//modules
+import Draggable from 'react-draggable';
+//types
+// type Props = {
+//   nodeRef?: React.RefObject<HTMLDivElement> | null;
+// };
+
 export default function Calculator() {
+  const nodeRef = useRef(null);
+
+  const [display, setDisplay] = useState<string>('');
+  const [previousEquation, setPreviousEquation] = useState<string>('');
+  const [lastWasResult, setLastWasResult] = useState<boolean>(false);
+
+  const handleClick = (value: string) => {
+    if (value === 'Clear') {
+      setDisplay('');
+      setPreviousEquation('');
+      setLastWasResult(false);
+      return;
+    }
+
+    if (value === 'Delete') {
+      if (lastWasResult) {
+        setDisplay('');
+        setLastWasResult(false);
+      } else {
+        setDisplay((prev) => prev.slice(0, -1));
+      }
+      return;
+    }
+
+    if (lastWasResult) {
+      const operators = ['+', '-', 'x', '/', '*'];
+      if (value === '=') {
+      } else if (operators.includes(value)) {
+        setDisplay((prev) => prev + value);
+        setPreviousEquation('');
+        setLastWasResult(false);
+        return;
+      } else {
+        setDisplay(value);
+        setPreviousEquation('');
+        setLastWasResult(false);
+        return;
+      }
+    }
+
+    if (value === '=') {
+      try {
+        setPreviousEquation(display);
+        const expr = display.replace(/x/g, '*');
+        // eslint-disable-next-line no-new-func
+        const result = Function('"use strict";return (' + expr + ')')();
+        setDisplay(String(result));
+        setLastWasResult(true);
+      } catch {
+        setDisplay('Error');
+        setLastWasResult(true);
+      }
+      return;
+    }
+
+    setDisplay((prev) => prev + value);
+  };
+
   return (
-    <div className="calculator-container">
-      <div className="display"></div>
-      <div className="input-group">
-        <button className="clear controls">Clear</button>
-        {/* <button className="blank">blank</button> */}
-        <button className="controls">/</button>
-        <button>7</button>
-        <button>8</button>
-        <button>9</button>
-        <button className="controls">x</button>
-        <button>4</button>
-        <button>5</button>
-        <button>6</button>
-        <button className="controls">-</button>
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button className="controls">+</button>
-        <button className="controls">.</button>
-        <button>0</button>
-        <button className="equals controls">=</button>
-        <button className="delete controls">Delete</button>
+    <Draggable nodeRef={nodeRef} handle=".handle-bar" bounds="body">
+      <div ref={nodeRef} className="calculator-container">
+        <div className="handle-bar"></div>
+        <div className="main-calculator">
+          <div className="display">
+            <p className="equation">
+              <span>{previousEquation}</span>
+            </p>
+            <span className="value">{display}</span>
+          </div>
+          <div className="input-group">
+            <button
+              className="clear controls"
+              onClick={() => handleClick('Clear')}
+            >
+              Clear
+            </button>
+            <button className="controls" onClick={() => handleClick('/')}>
+              /
+            </button>
+            <button onClick={() => handleClick('7')}>7</button>
+            <button onClick={() => handleClick('8')}>8</button>
+            <button onClick={() => handleClick('9')}>9</button>
+            <button className="controls" onClick={() => handleClick('x')}>
+              x
+            </button>
+            <button onClick={() => handleClick('4')}>4</button>
+            <button onClick={() => handleClick('5')}>5</button>
+            <button onClick={() => handleClick('6')}>6</button>
+            <button className="controls" onClick={() => handleClick('-')}>
+              -
+            </button>
+            <button onClick={() => handleClick('1')}>1</button>
+            <button onClick={() => handleClick('2')}>2</button>
+            <button onClick={() => handleClick('3')}>3</button>
+            <button className="controls" onClick={() => handleClick('+')}>
+              +
+            </button>
+            <button className="controls" onClick={() => handleClick('.')}>
+              .
+            </button>
+            <button onClick={() => handleClick('0')}>0</button>
+            <button
+              className="equals controls"
+              onClick={() => handleClick('=')}
+            >
+              =
+            </button>
+            <button
+              className="delete controls"
+              onClick={() => handleClick('Delete')}
+            >
+              Delete
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
+    </Draggable>
   );
 }
-
-// export default RainbowLine;

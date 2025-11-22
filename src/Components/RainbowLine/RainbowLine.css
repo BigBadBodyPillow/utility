@@ -26,6 +26,7 @@
   background-image: var(--rainbow);
   background-size: 400%;
   animation: rainbow-animation 100s infinite;
+  z-index: 9999999999999999999999;
 }
 @keyframes rainbow-animation {
   0% {
