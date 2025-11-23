@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useRef } from 'react';
+import { useState, useRef } from 'react';
+// import { useRef } from 'react';
 
 //css
 import './Calculator.css';
@@ -11,12 +11,13 @@ import Draggable from 'react-draggable';
 //   nodeRef?: React.RefObject<HTMLDivElement> | null;
 // };
 
-export default function Calculator() {
-  const nodeRef = useRef(null);
-
+export function Calculator() {
   const [display, setDisplay] = useState<string>('');
   const [previousEquation, setPreviousEquation] = useState<string>('');
   const [lastWasResult, setLastWasResult] = useState<boolean>(false);
+  const [calculatorVisible, setCalculatorVisible] = useState<boolean>(false);
+
+  const nodeRef = useRef(null);
 
   const handleClick = (value: string) => {
     if (value === 'Clear') {
@@ -69,65 +70,84 @@ export default function Calculator() {
 
     setDisplay((prev) => prev + value);
   };
+  const toggleCalculator = () => {
+    setCalculatorVisible(!calculatorVisible);
+  };
 
   return (
-    <Draggable nodeRef={nodeRef} handle=".handle-bar" bounds="body">
-      <div ref={nodeRef} className="calculator-container">
-        <div className="handle-bar"></div>
-        <div className="main-calculator">
-          <div className="display">
-            <p className="equation">
-              <span>{previousEquation}</span>
-            </p>
-            <span className="value">{display}</span>
-          </div>
-          <div className="input-group">
-            <button
-              className="clear controls"
-              onClick={() => handleClick('Clear')}
-            >
-              Clear
-            </button>
-            <button className="controls" onClick={() => handleClick('/')}>
-              /
-            </button>
-            <button onClick={() => handleClick('7')}>7</button>
-            <button onClick={() => handleClick('8')}>8</button>
-            <button onClick={() => handleClick('9')}>9</button>
-            <button className="controls" onClick={() => handleClick('x')}>
-              x
-            </button>
-            <button onClick={() => handleClick('4')}>4</button>
-            <button onClick={() => handleClick('5')}>5</button>
-            <button onClick={() => handleClick('6')}>6</button>
-            <button className="controls" onClick={() => handleClick('-')}>
-              -
-            </button>
-            <button onClick={() => handleClick('1')}>1</button>
-            <button onClick={() => handleClick('2')}>2</button>
-            <button onClick={() => handleClick('3')}>3</button>
-            <button className="controls" onClick={() => handleClick('+')}>
-              +
-            </button>
-            <button className="controls" onClick={() => handleClick('.')}>
-              .
-            </button>
-            <button onClick={() => handleClick('0')}>0</button>
-            <button
-              className="equals controls"
-              onClick={() => handleClick('=')}
-            >
-              =
-            </button>
-            <button
-              className="delete controls"
-              onClick={() => handleClick('Delete')}
-            >
-              Delete
-            </button>
+    <>
+      <button className="calculator-toggle" onClick={() => toggleCalculator()}>
+        {calculatorVisible ? 'Close' : 'Open'}
+      </button>
+      <Draggable
+        nodeRef={nodeRef}
+        handle=".handle-bar"
+        bounds="body"
+        // defaultPosition={{ x: 25, y: 25 }}
+      >
+        <div
+          ref={nodeRef}
+          className={
+            'calculator-container ' + (calculatorVisible ? ' ' : 'hidden')
+          }
+          // style={{ position: 'absolute', bottom: '6.25rem', right: '18rem' }}
+        >
+          <div className="handle-bar"></div>
+          <div className="main-calculator">
+            <div className="display">
+              <p className="equation">
+                <span>{previousEquation}</span>
+              </p>
+              <span className="value">{display}</span>
+            </div>
+            <div className="input-group">
+              <button
+                className="clear controls"
+                onClick={() => handleClick('Clear')}
+              >
+                Clear
+              </button>
+              <button className="controls" onClick={() => handleClick('/')}>
+                /
+              </button>
+              <button onClick={() => handleClick('7')}>7</button>
+              <button onClick={() => handleClick('8')}>8</button>
+              <button onClick={() => handleClick('9')}>9</button>
+              <button className="controls" onClick={() => handleClick('x')}>
+                x
+              </button>
+              <button onClick={() => handleClick('4')}>4</button>
+              <button onClick={() => handleClick('5')}>5</button>
+              <button onClick={() => handleClick('6')}>6</button>
+              <button className="controls" onClick={() => handleClick('-')}>
+                -
+              </button>
+              <button onClick={() => handleClick('1')}>1</button>
+              <button onClick={() => handleClick('2')}>2</button>
+              <button onClick={() => handleClick('3')}>3</button>
+              <button className="controls" onClick={() => handleClick('+')}>
+                +
+              </button>
+              <button className="controls" onClick={() => handleClick('.')}>
+                .
+              </button>
+              <button onClick={() => handleClick('0')}>0</button>
+              <button
+                className="equals controls"
+                onClick={() => handleClick('=')}
+              >
+                =
+              </button>
+              <button
+                className="delete controls"
+                onClick={() => handleClick('Delete')}
+              >
+                Delete
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </Draggable>
+      </Draggable>
+    </>
   );
 }

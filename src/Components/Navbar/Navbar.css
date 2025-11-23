@@ -1,0 +1,30 @@
+.navbar {
+  display: flex;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  justify-content: center;
+}
+.nav-items {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  max-width: 400px;
+  justify-content: center;
+}
+
+.nav-items span {
+  cursor: pointer;
+  border-radius: 100000000000px;
+  padding: 0.05rem 1rem;
+  border: 2px solid var(--border-colour);
+  user-select: none;
+}
+
+.nav-items span:hover {
+  border-color: transparent;
+  background-color: var(--accent-colour);
+  /* transition: background-color 0.25s; */
+}
+.nav-items span:active {
+  opacity: 0.75;
+}

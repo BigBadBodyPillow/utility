@@ -62,12 +62,18 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: var(--accent-colour);
+  /* border-color: var(--accent-colour); */
+  border-color: transparent;
+  background-color: var(--accent-colour);
 }
 /* button:focus, */
 button:focus-visible {
   /* outline: 4px auto -webkit-focus-ring-color; */
   outline: 4px auto var(--accent-colour);
+}
+
+button:active {
+  opacity: 0.75;
 }
 
 @media (prefers-color-scheme: light) {
