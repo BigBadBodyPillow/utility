@@ -10,6 +10,8 @@ have a table for things like pobs, and atlas trees.
 notes (regex aswell?)
 timer
 
+https://docs.dndkit.com/
+
 https://www.npmjs.com/package/react-draggable
 
 https://www.svgrepo.com/

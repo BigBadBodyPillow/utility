@@ -1,0 +1,36 @@
+.notes-list ul li {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  white-space: nowrap;
+}
+.list-handle {
+  padding-block: 0.5rem;
+  width: 15px;
+  align-self: stretch;
+  margin-right: 0.4rem;
+  cursor: grab;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 3px;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+.list-handle div {
+  background-color: var(--button-colour);
+  border: 1px solid var(--border-colour);
+  border-radius: 1px;
+  aspect-ratio: 1/1;
+}
+.note-title {
+  border: 1px solid var(--border-colour);
+  border-radius: var(--border-radius);
+  background-color: var(--button-colour);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  flex-grow: 1;
+}
+.note-title:hover {
+  background-color: var(--accent-colour);
+}

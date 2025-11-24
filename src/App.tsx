@@ -5,6 +5,7 @@ import './App.css';
 import RainbowLine from './Components/RainbowLine/RainbowLine';
 import { Calculator } from './Components/Calculator/Calculator';
 import { Navbar } from './Components/Navbar/Navbar';
+import { Notes } from './Components/Notes/Notes';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <RainbowLine />
       <Navbar />
       <Calculator />
+      <Notes />
     </>
   );
 }

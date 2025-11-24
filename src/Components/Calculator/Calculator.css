@@ -94,6 +94,7 @@
 }
 .react-draggable-dragging {
   cursor: grabbing;
+  z-index: 999;
 }
 
 .calculator-toggle {
