@@ -23,7 +23,7 @@
   border: 1px solid var(--border-colour);
 
   position: relative;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 .notes-list ul {
   padding: 0;
@@ -48,6 +48,7 @@
 }
 .add-notes {
   white-space: nowrap;
+  width: 100%;
 }
 .add-notes::before {
   content: '';
