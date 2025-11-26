@@ -1,0 +1,101 @@
+.ql-container.ql-snow,
+.ql-toolbar.ql-snow {
+  font-family: inherit !important;
+  font-size: 1rem;
+  border-color: var(--border-colour) !important;
+  border-radius: var(--border-radius) !important;
+}
+
+.ql-container.ql-snow {
+  border-radius: 0 0 var(--border-radius) var(--border-radius) !important;
+}
+.ql-toolbar.ql-snow {
+  border-radius: var(--border-radius) var(--border-radius) 0 0 !important;
+}
+
+/* text */
+.ql-snow.ql-toolbar .ql-picker-label:hover,
+.ql-snow.ql-toolbar .ql-picker-item:hover,
+.ql-snow.ql-toolbar .ql-picker-item.ql-selected,
+.ql-snow.ql-toolbar .ql-picker-label.ql-active,
+.ql-snow.ql-toolbar button.ql-active,
+.ql-snow a {
+  color: var(--accent-colour) !important;
+}
+
+/* icons */
+.ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke,
+.ql-snow.ql-toolbar button:hover .ql-stroke,
+.ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke,
+.ql-snow.ql-toolbar button.ql-active .ql-stroke {
+  stroke: var(--accent-colour) !important;
+}
+.ql-snow.ql-toolbar button:hover .ql-fill,
+.ql-snow.ql-toolbar .ql-picker-label:hover .ql-fill,
+.ql-snow.ql-toolbar button.ql-active .ql-fill {
+  fill: var(--accent-colour) !important;
+}
+/* disable the border when a dropdown is expadned */
+.ql-toolbar.ql-snow .ql-picker-label {
+  border: none !important;
+  border-radius: var(--border-radius) !important;
+}
+
+#ql-picker-options-0,
+#ql-picker-options-1 {
+  background-color: var(--background-colour) !important;
+}
+.ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-options {
+  border-radius: var(--border-radius);
+  border-color: var(--border-colour) !important;
+}
+/* width was hardcoded, with font change this needed to cahge too */
+.ql-snow .ql-picker.ql-header {
+  width: 110px !important;
+}
+.ql-font.ql-picker {
+  display: none !important;
+}
+/* codeblock */
+.ql-code-block-container {
+  background-color: var(--button-colour) !important;
+  color: var(--colour) !important;
+}
+.ql-code-block {
+  opacity: 0.8 !important;
+}
+
+/* when you click on a link */
+.ql-tooltip {
+  background-color: var(--background-colour) !important;
+  border-color: var(--border-colour) !important;
+  box-shadow: none !important;
+  border-radius: var(--border-radius);
+}
+
+.ql-snow .ql-tooltip a.ql-action::after {
+  border-color: var(--border-colour) !important ;
+}
+
+/* temp fix idk idk2 id */
+.ql-container.ql-snow {
+  background-color: var(--button-colour);
+  min-height: 0 !important;
+  max-height: 70vh !important;
+}
+
+@media (height <= 1028px) {
+  .ql-container.ql-snow {
+    max-height: 65vh !important;
+  }
+}
+@media (height <= 816px) {
+  .ql-container.ql-snow {
+    max-height: 50vh !important;
+  }
+}
+@media (height <= 600px) {
+  .ql-container.ql-snow {
+    max-height: 45vh !important;
+  }
+}

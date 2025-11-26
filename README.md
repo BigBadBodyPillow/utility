@@ -10,6 +10,9 @@ have a table for things like pobs, and atlas trees.
 notes (regex aswell?)
 timer
 
+https://primereact.org/editor/
+https://github.com/slab/quill
+
 https://docs.dndkit.com/
 
 https://www.npmjs.com/package/react-draggable

@@ -1,10 +1,20 @@
+import { useState } from 'react';
+
 //css
 import './Notes.css';
+import './quillOverwrites.css';
 
 //components
 import { List } from './list/List';
 
+//modules
+import { PrimeReactProvider } from 'primereact/api';
+import { Editor } from 'primereact/editor';
+// import 'primereact/resources/themes/lara-light-cyan/theme.css';
+
 export function Notes() {
+  const [text, setText] = useState('');
+
   return (
     <>
       <div className="notes">
@@ -19,7 +29,24 @@ export function Notes() {
             <button className="add-notes">Add Note</button>
           </div>
         </div>
-        <div className="notes-edit">asd</div>
+        <PrimeReactProvider
+        // value={{ unstyled: true }}
+        >
+          <div className="notes-edit">
+            <div className="title-section">
+              <input
+                type="text"
+                className="note-editor-title"
+                placeholder="add a title for your note"
+              />
+            </div>
+            <Editor
+              value={text}
+              onTextChange={(e) => setText(e.htmlValue || '')}
+              style={{ minHeight: '320px' }}
+            />
+          </div>
+        </PrimeReactProvider>
       </div>
     </>
   );

@@ -7,13 +7,18 @@ import { Calculator } from './Components/Calculator/Calculator';
 import { Navbar } from './Components/Navbar/Navbar';
 import { Notes } from './Components/Notes/Notes';
 
+
 function App() {
   return (
     <>
       <RainbowLine />
       <Navbar />
       <Calculator />
+      {/* <PrimeReactProvider
+      // value={{ unstyled: true }}
+      > */}
       <Notes />
+      {/* </PrimeReactProvider> */}
     </>
   );
 }
