@@ -1,3 +1,6 @@
+.notes-list {
+  min-width: 187px;
+}
 .notes-list ul li {
   display: flex;
   flex-direction: row;

@@ -71,9 +71,12 @@ button:hover {
 input:focus-visible,
 button:focus-visible {
   /* outline: 4px auto -webkit-focus-ring-color; */
-  outline: 4px auto var(--accent-colour);
+  outline: 4px solid var(--accent-colour);
 }
 
+/* .note-editor-title:focus-visible {
+  outline: 4px solid var(--accent-colour);
+} */
 button:active {
   opacity: 0.75;
 }

@@ -73,7 +73,7 @@
 .note-editor-title {
   width: 100%;
   font-family: inherit;
-  font-size: 1.25rem;
+  font-size: 1rem;
   color: var(--colour);
   background-color: var(--button-colour);
   border-radius: var(--border-radius);
@@ -81,6 +81,7 @@
   height: 3rem;
   padding-left: 1rem;
 }
+
 .note-editor-title::placeholder {
   color: var(--colour);
   opacity: 0.3;

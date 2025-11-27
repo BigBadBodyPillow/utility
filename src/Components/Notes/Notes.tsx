@@ -43,7 +43,11 @@ export function Notes() {
             <Editor
               value={text}
               onTextChange={(e) => setText(e.htmlValue || '')}
-              style={{ minHeight: '320px' }}
+              style={
+                {
+                  // maxHeight: '875px',
+                }
+              }
             />
           </div>
         </PrimeReactProvider>

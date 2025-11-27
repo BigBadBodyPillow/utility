@@ -19,7 +19,8 @@
 .ql-snow.ql-toolbar .ql-picker-item.ql-selected,
 .ql-snow.ql-toolbar .ql-picker-label.ql-active,
 .ql-snow.ql-toolbar button.ql-active,
-.ql-snow a {
+.ql-snow a,
+.ql-picker-label:focus-visible {
   color: var(--accent-colour) !important;
 }
 
@@ -27,13 +28,20 @@
 .ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke,
 .ql-snow.ql-toolbar button:hover .ql-stroke,
 .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke,
-.ql-snow.ql-toolbar button.ql-active .ql-stroke {
+.ql-snow.ql-toolbar button.ql-active .ql-stroke,
+.ql-snow.ql-toolbar button:focus .ql-stroke,
+.ql-picker-label:focus-visible .ql-stroke {
   stroke: var(--accent-colour) !important;
 }
 .ql-snow.ql-toolbar button:hover .ql-fill,
 .ql-snow.ql-toolbar .ql-picker-label:hover .ql-fill,
-.ql-snow.ql-toolbar button.ql-active .ql-fill {
+.ql-snow.ql-toolbar button.ql-active .ql-fill,
+.ql-snow.ql-toolbar button:focus .ql-fill,
+.ql-picker-label:focus-visible .ql-fill {
   fill: var(--accent-colour) !important;
+}
+.ql-picker-label:focus-visible {
+  outline: 4px solid var(--accent-colour);
 }
 /* disable the border when a dropdown is expadned */
 .ql-toolbar.ql-snow .ql-picker-label {
@@ -80,11 +88,12 @@
 /* temp fix idk idk2 id */
 .ql-container.ql-snow {
   background-color: var(--button-colour);
-  min-height: 0 !important;
-  max-height: 70vh !important;
+  /* min-height: 0 !important;
+  max-height: 70vh !important; */
+  flex-grow: 1;
 }
 
-@media (height <= 1028px) {
+/* @media (height <= 1028px) {
   .ql-container.ql-snow {
     max-height: 65vh !important;
   }
@@ -98,4 +107,10 @@
   .ql-container.ql-snow {
     max-height: 45vh !important;
   }
+} */
+
+[data-pc-name='editor'] {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
