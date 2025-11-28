@@ -82,6 +82,9 @@
   padding-left: 1rem;
 }
 
+.note-editor-title:focus-visible {
+  outline: 4px solid var(--accent-colour);
+}
 .note-editor-title::placeholder {
   color: var(--colour);
   opacity: 0.3;

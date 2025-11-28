@@ -36,7 +36,7 @@ export function Notes() {
             <div className="title-section">
               <input
                 type="text"
-                className="note-editor-title"
+                className="note-editor-title focus-visible "
                 placeholder="add a title for your note"
               />
             </div>

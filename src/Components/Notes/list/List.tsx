@@ -1,31 +1,32 @@
-import { useRef } from 'react';
+// import { useRef } from 'react';
 //modules
-import Draggable from 'react-draggable';
+// import Draggable from 'react-draggable';
 
 //css
 import './List.css';
 
 export function List({ title }: { title: string }) {
-  const nodeRef = useRef(null);
+  // const nodeRef = useRef(null);
   return (
     <>
-      <Draggable
+      {/* <Draggable
         nodeRef={nodeRef}
         handle=".list-handle"
         bounds=".notes-list ul"
-      >
-        <li ref={nodeRef}>
-          <div className="list-handle">
+      > */}
+      {/* <li ref={nodeRef}> */}
+      <li>
+        {/* <div className="list-handle">
             <div></div>
             <div></div>
             <div></div>
             <div></div>
             <div></div>
             <div></div>
-          </div>
-          <div className="note-title">{title}</div>
-        </li>
-      </Draggable>
+          </div> */}
+        <div className="note-title">{title}</div>
+      </li>
+      {/* </Draggable> */}
     </>
   );
 }
