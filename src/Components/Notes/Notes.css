@@ -10,6 +10,17 @@
   box-sizing: border-box;
 }
 
+@media (height < 850px) {
+  .notes {
+    max-height: 85%;
+  }
+}
+@media (height < 600px) {
+  .notes {
+    max-height: 80%;
+  }
+}
+
 .notes-edit {
   flex-grow: 1;
   /* height: fit-content; */
@@ -77,7 +88,7 @@
   color: var(--colour);
   background-color: var(--button-colour);
   border-radius: var(--border-radius);
-  border-color: var(--border-colour);
+  border: 1px solid var(--border-colour);
   height: 3rem;
   padding-left: 1rem;
 }

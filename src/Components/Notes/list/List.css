@@ -7,6 +7,11 @@
   align-items: stretch;
   white-space: nowrap;
 }
+.note-item {
+  /* line hight + the padding */
+  min-height: calc(24px + (2 * 0.5rem));
+  position: relative;
+}
 .list-handle {
   padding-block: 0.5rem;
   width: 15px;
@@ -27,13 +32,53 @@
   aspect-ratio: 1/1;
 }
 .note-title {
-  border: 1px solid var(--border-colour);
+  /* border: 1px solid var(--border-colour); */
   border-radius: var(--border-radius);
   background-color: var(--button-colour);
   padding: 0.5rem 1rem;
   cursor: pointer;
   flex-grow: 1;
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+/* .note-title:active {
+  cursor: grab;
+} */
+/* .note-title[style~='transform:']:active {
+  cursor: grabbing;
+} */
 .note-title:hover {
   background-color: var(--accent-colour);
+}
+.note-title:active {
+  background-color: #bd5496;
+}
+
+.delete-button {
+  position: absolute;
+  height: calc(100% - 1px);
+  margin-top: 0.5px;
+  aspect-ratio: 1/1;
+  right: 1px;
+  background-color: #b81334;
+  justify-content: center;
+  padding: 0;
+  z-index: -1;
+}
+
+.delete-button:hover {
+  background-color: #b81334;
+  opacity: 0.8 !important;
+}
+.delete-button:active {
+  background-color: #b81334;
+  opacity: 0.6 !important;
+}
+/* .note-title.react-draggable-dragged + .delete-button {
+  z-index: 1;
+} */
+
+.binIcon {
+  transform: translateY(10%);
 }
