@@ -40,7 +40,7 @@ export const BinIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
     // xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
     {...props}
   >
-    <title>{'icon/18/icon-delete'}</title>
+    <title>{'Delete Note'}</title>
     <desc>{'Created with Sketch.'}</desc>
     <defs />
     <g

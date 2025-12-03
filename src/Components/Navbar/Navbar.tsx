@@ -8,7 +8,7 @@ export function Navbar() {
         <div className="nav-items">
           <span>Links</span>
           <span>Notes</span>
-          {/* <span>Sheets</span> */}
+          <span>Sheets</span>
         </div>
       </div>
     </>

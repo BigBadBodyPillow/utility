@@ -39,11 +39,14 @@
   width: max-content;
   max-width: 300px;
   border-radius: var(--border-radius);
-
   border: 1px solid var(--border-colour);
 
-  position: relative;
-  overflow: hidden;
+  /* position: relative;
+  overflow: hidden; */
+
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 .notes-list ul {
   padding: 0;
@@ -54,17 +57,23 @@
   flex-direction: column;
   gap: 0.66rem;
   padding: 0.5rem 1rem;
+
+  flex: 1 1 auto;
+  overflow: auto;
 }
 
 .add-section {
-  position: absolute;
+  position: sticky;
   /* bottom: 3rem; */
   bottom: 0;
   display: flex;
   justify-content: center;
   padding: 0.5rem 0.5rem;
   width: 100%;
+
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
   background-color: var(--background-colour);
+  z-index: 1;
 }
 .add-notes {
   white-space: nowrap;
