@@ -1,5 +1,7 @@
 # utility
 
+[Demo](https://bigbadbodypillow.github.io/utility/)
+
 ## vision
 
 a usefull website that i plan to always have open- specifically when playing path of exile.
