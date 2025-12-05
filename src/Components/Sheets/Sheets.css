@@ -1,0 +1,24 @@
+.sheets {
+  width: 100%;
+  height: 100%;
+  max-height: 90%;
+  padding: 2rem;
+}
+.sheets-embed {
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--border-colour);
+  border-radius: var(--border-radius);
+}
+
+@media (height < 850px) {
+  .sheets {
+    max-height: 85%;
+  }
+}
+@media (height < 600px) {
+  .sheets {
+    max-height: 80%;
+  }
+}
+

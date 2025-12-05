@@ -12,7 +12,7 @@
   justify-content: center;
 }
 
-.nav-items span {
+.nav-items a {
   cursor: pointer;
   color: rgba(205, 205, 205, 0.67);
   border-radius: 16px;
@@ -22,12 +22,13 @@
   user-select: none;
 }
 
-.nav-items span:hover {
+.nav-items a:hover {
   border-color: transparent;
   color: var(--colour);
   background-color: var(--accent-colour);
+  opacity: 1;
   /* transition: background-color 0.25s; */
 }
-.nav-items span:active {
+.nav-items a:active {
   opacity: 0.75;
 }

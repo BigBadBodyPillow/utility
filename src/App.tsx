@@ -1,23 +1,33 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 //css
 import './App.css';
 
 //components
 import RainbowLine from './Components/RainbowLine/RainbowLine';
 import { Calculator } from './Components/Calculator/Calculator';
-// import { Navbar } from './Components/Navbar/Navbar';
+import { Navbar } from './Components/Navbar/Navbar';
 import { Notes } from './Components/Notes/Notes';
+import { Sheets } from './Components/Sheets/Sheets';
 
 function App() {
   return (
     <>
-      <RainbowLine />
-      {/* <Navbar /> */}
-      <Calculator />
-      {/* <PrimeReactProvider
+      <BrowserRouter>
+        <RainbowLine />
+        <Navbar />
+        <Calculator />
+        {/* <PrimeReactProvider
       // value={{ unstyled: true }}
       > */}
-      <Notes />
-      {/* </PrimeReactProvider> */}
+        {/* <Notes /> */}
+        <Routes>
+          <Route index element={<Notes />} />
+          <Route path="/notes" element={<Notes />} />
+          <Route path="/sheets" element={<Sheets />} />
+        </Routes>
+        {/* </PrimeReactProvider> */}
+      </BrowserRouter>
     </>
   );
 }
