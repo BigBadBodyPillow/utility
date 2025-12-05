@@ -22,9 +22,9 @@ function App() {
       > */}
         {/* <Notes /> */}
         <Routes>
-          <Route path="utility/" element={<Notes />} />
-          <Route path="utility/notes" element={<Notes />} />
-          <Route path="utility/sheets" element={<Sheets />} />
+          <Route path="/utility/" element={<Notes />} />
+          <Route path="/utility/notes" element={<Notes />} />
+          <Route path="/utility/sheets" element={<Sheets />} />
         </Routes>
         {/* </PrimeReactProvider> */}
       </BrowserRouter>

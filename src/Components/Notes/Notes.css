@@ -28,6 +28,7 @@
   flex-direction: column;
   min-height: 0;
   min-width: 0;
+  max-width: 1500px;
   gap: 1rem;
   border-radius: var(--border-radius);
   padding: 1rem;
