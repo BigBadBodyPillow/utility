@@ -13,7 +13,7 @@ import { Sheets } from './Components/Sheets/Sheets';
 function App() {
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename="/utility/">
         <RainbowLine />
         <Navbar />
         <Calculator />
@@ -22,9 +22,9 @@ function App() {
       > */}
         {/* <Notes /> */}
         <Routes>
-          <Route path="/utility/" element={<Notes />} />
-          <Route path="/utility/notes" element={<Notes />} />
-          <Route path="/utility/sheets" element={<Sheets />} />
+          <Route index element={<Notes />} />
+          <Route path="/notes" element={<Notes />} />
+          <Route path="/sheets" element={<Sheets />} />
         </Routes>
         {/* </PrimeReactProvider> */}
       </BrowserRouter>

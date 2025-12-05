@@ -10,9 +10,9 @@ export function Navbar() {
           {/* <span>Links</span> */}
           {/* <span>Notes</span> */}
           {/* <span>Sheets</span> */}
-          <NavLink to="/utility/links">Links</NavLink>
-          <NavLink to="/utility/notes">Notes</NavLink>
-          <NavLink to="/utility/sheets">sheets</NavLink>
+          <NavLink to="/links">Links</NavLink>
+          <NavLink to="/notes">Notes</NavLink>
+          <NavLink to="/sheets">sheets</NavLink>
         </div>
       </div>
     </>
