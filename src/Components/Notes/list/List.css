@@ -41,6 +41,7 @@
   max-width: 250px;
   overflow: hidden;
   text-overflow: ellipsis;
+  z-index: 1;
 }
 /* .note-title:active {
   cursor: grab;

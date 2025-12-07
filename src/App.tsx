@@ -13,7 +13,7 @@ import { Sheets } from './Components/Sheets/Sheets';
 function App() {
   return (
     <>
-      <BrowserRouter basename="/utility/">
+      <BrowserRouter basename="/utility">
         <RainbowLine />
         <Navbar />
         <Calculator />
