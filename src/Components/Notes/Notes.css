@@ -34,7 +34,8 @@
   padding: 1rem;
   border: 1px solid var(--border-colour);
   position: relative;
-  overflow: scroll;
+  overflow-y: scroll;
+
 }
 .notes-list {
   width: max-content;

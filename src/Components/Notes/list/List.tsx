@@ -30,6 +30,18 @@ export function List({
   // const [dragged, setDragged] = useState(false);
   const nodeRef = useRef<HTMLDivElement | null>(null);
 
+  const isDraggingRef = useRef<boolean>(false);
+  const justDraggedRef = useRef<boolean>(false);
+
+  function handleSelect() {
+    if (justDraggedRef.current) {
+      justDraggedRef.current = false;
+      return;
+    }
+
+    onSelect(id);
+  }
+
   function handleDeleteButtonActive() {
     const draggableDiv = nodeRef.current;
     if (!draggableDiv) return;
@@ -53,7 +65,7 @@ export function List({
       <li
         // ref={nodeRef}
         className={active ? 'note-item active' : 'note-item'}
-        onClick={() => onSelect(id)}
+        onClick={handleSelect}
       >
         {/* <div className="list-handle">
             <div></div>
@@ -71,9 +83,23 @@ export function List({
           // bounds=".notes-list ul"
           axis="x"
           bounds={{ left: -50, right: 0 }}
-          onStop={handleDeleteButtonActive}
+          onStart={() => {
+            isDraggingRef.current = true;
+          }}
+          onStop={() => {
+            isDraggingRef.current = false;
+            handleDeleteButtonActive();
+            justDraggedRef.current = true;
+            window.setTimeout(() => (justDraggedRef.current = false), 150);
+          }}
         >
-          <div className="note-title" role="button" ref={nodeRef}>
+          <div
+            className="note-title"
+            role="button"
+            ref={nodeRef}
+            onClick={handleSelect}
+            onTouchEnd={handleSelect}
+          >
             {title ? title : 'untitled'}
           </div>
         </Draggable>
