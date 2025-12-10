@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 
 //modules
 import Draggable from 'react-draggable';
@@ -30,16 +30,49 @@ export function List({
   // const [dragged, setDragged] = useState(false);
   const nodeRef = useRef<HTMLDivElement | null>(null);
 
-  const isDraggingRef = useRef<boolean>(false);
   const justDraggedRef = useRef<boolean>(false);
+  const pointerStartRef = useRef<{ x: number; y: number } | null>(null);
+  const movedRef = useRef<boolean>(false);
+
+  const MOVE_THRESHOLD = 8; // pixels
+  const DRAG_DEBOUNCE_MS = 250;
 
   function handleSelect() {
     if (justDraggedRef.current) {
       justDraggedRef.current = false;
       return;
     }
-
     onSelect(id);
+  }
+
+  function handlePointerStart(clientX: number, clientY: number) {
+    pointerStartRef.current = { x: clientX, y: clientY };
+    movedRef.current = false;
+  }
+
+  function handlePointerMove(clientX: number, clientY: number) {
+    const start = pointerStartRef.current;
+    if (!start) return;
+    const dx = Math.abs(clientX - start.x);
+    const dy = Math.abs(clientY - start.y);
+    if (dx > MOVE_THRESHOLD || dy > MOVE_THRESHOLD) {
+      movedRef.current = true;
+    }
+  }
+
+  function handlePointerEnd() {
+    const moved = movedRef.current;
+    pointerStartRef.current = null;
+    movedRef.current = false;
+    if (moved) {
+      // treat as a drag — block immediate selection briefly
+      justDraggedRef.current = true;
+      window.setTimeout(() => (justDraggedRef.current = false), DRAG_DEBOUNCE_MS);
+      return;
+    }
+
+    // it's a tap
+    handleSelect();
   }
 
   function handleDeleteButtonActive() {
@@ -65,7 +98,6 @@ export function List({
       <li
         // ref={nodeRef}
         className={active ? 'note-item active' : 'note-item'}
-        onClick={handleSelect}
       >
         {/* <div className="list-handle">
             <div></div>
@@ -83,14 +115,10 @@ export function List({
           // bounds=".notes-list ul"
           axis="x"
           bounds={{ left: -50, right: 0 }}
-          onStart={() => {
-            isDraggingRef.current = true;
-          }}
           onStop={() => {
-            isDraggingRef.current = false;
             handleDeleteButtonActive();
             justDraggedRef.current = true;
-            window.setTimeout(() => (justDraggedRef.current = false), 150);
+            window.setTimeout(() => (justDraggedRef.current = false), DRAG_DEBOUNCE_MS);
           }}
         >
           <div
@@ -98,7 +126,18 @@ export function List({
             role="button"
             ref={nodeRef}
             onClick={handleSelect}
-            onTouchEnd={handleSelect}
+            onTouchStart={(e: React.TouchEvent) => {
+              const t = e.touches && e.touches[0];
+              if (t) handlePointerStart(t.clientX, t.clientY);
+            }}
+            onTouchMove={(e: React.TouchEvent) => {
+              const t = e.touches && e.touches[0];
+              if (t) handlePointerMove(t.clientX, t.clientY);
+            }}
+            onTouchEnd={() => handlePointerEnd()}
+            onPointerDown={(e: React.PointerEvent) => handlePointerStart(e.clientX, e.clientY)}
+            onPointerMove={(e: React.PointerEvent) => handlePointerMove(e.clientX, e.clientY)}
+            onPointerUp={() => handlePointerEnd()}
           >
             {title ? title : 'untitled'}
           </div>
