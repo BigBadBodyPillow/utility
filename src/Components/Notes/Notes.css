@@ -8,6 +8,7 @@
   /* height: calc(100vh - 4rem); */
   max-height: 90%;
   box-sizing: border-box;
+  justify-content: center;
 }
 
 @media (height < 850px) {

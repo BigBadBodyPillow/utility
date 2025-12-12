@@ -9,6 +9,7 @@ import { Calculator } from './Components/Calculator/Calculator';
 import { Navbar } from './Components/Navbar/Navbar';
 import { Notes } from './Components/Notes/Notes';
 import { Sheets } from './Components/Sheets/Sheets';
+import { Links } from './Components/Links/Links';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route index element={<Notes />} />
           <Route path="/notes" element={<Notes />} />
           <Route path="/sheets" element={<Sheets />} />
+          <Route path="/links" element={<Links />} />
         </Routes>
         {/* </PrimeReactProvider> */}
       </BrowserRouter>
